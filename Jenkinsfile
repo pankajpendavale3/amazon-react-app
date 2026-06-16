@@ -10,12 +10,11 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Debug') {
             steps {
-                dir('amazon-react-app') {
-                    sh 'npm install'
-                    sh 'npm run build'
-                }
+                sh 'pwd'
+                sh 'ls -la'
+                sh 'find . -name package.json'
             }
         }
     }
