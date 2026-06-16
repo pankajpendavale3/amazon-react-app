@@ -3,27 +3,19 @@ pipeline {
 
     stages {
 
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                url: 'https://github.com/pankajpendavale3/amazon-react-app.git'
+            }
+        }
+
         stage('Build') {
             steps {
-                sh 'npm install'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                sh 'npm test -- --watchAll=false'
-            }
-        }
-
-        stage('Package') {
-            steps {
-                sh 'npm run build'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploy Stage'
+                dir('amazon-react-app') {
+                    sh 'npm install'
+                    sh 'npm run build'
+                }
             }
         }
     }
