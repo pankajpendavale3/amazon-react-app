@@ -1,14 +1,7 @@
 pipeline {
-
     agent any
 
     stages {
-
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/pankajpendavale3/amazon-react-app.git'
-            }
-        }
 
         stage('Build') {
             steps {
@@ -30,10 +23,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh '''
-                sudo rm -rf /var/www/html/*
-                sudo cp -r build/* /var/www/html/
-                '''
+                echo 'Deploy Stage'
             }
         }
     }
